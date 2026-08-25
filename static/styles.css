@@ -1,0 +1,51 @@
+:root { --bg:#111210; --panel:#191a17; --soft:#242520; --line:#30312b; --text:#ecece7; --muted:#999b92; --accent:#c9f56a; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 Inter,ui-sans-serif,system-ui,sans-serif; height:100vh; display:flex; overflow:hidden }
+button,select,textarea,input { font:inherit }
+button { color:inherit; cursor:pointer }
+#sidebar { width:260px; flex:none; padding:18px 12px; background:#151613; border-right:1px solid var(--line); display:flex; flex-direction:column; gap:18px }
+.brand { display:flex; align-items:center; gap:10px; padding:3px 7px; font-size:16px }
+.logo,.hero-logo { display:grid; place-items:center; background:var(--accent); color:#182009; font-weight:900; border-radius:10px }
+.logo { width:30px; height:30px }
+.primary { border:0; background:var(--accent); color:#172006; font-weight:700; padding:10px 14px; border-radius:10px }
+#history { flex:1; overflow:auto }
+.history-item { display:block; width:100%; padding:9px 10px; border:0; border-radius:8px; background:transparent; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#c9cac4 }
+.history-item:hover,.history-item.active { background:var(--soft) }
+.privacy { color:var(--muted); font-size:12px; padding:8px }
+.privacy span { display:inline-block; width:7px; height:7px; border-radius:50%; background:#73d879; margin-right:6px }
+main { min-width:0; flex:1; display:flex; flex-direction:column; position:relative }
+header { height:62px; flex:none; padding:0 20px; display:flex; align-items:center; gap:10px; border-bottom:1px solid rgba(48,49,43,.6) }
+header select { background:var(--soft); color:var(--text); border:1px solid var(--line); border-radius:9px; padding:7px 30px 7px 10px }
+#menu,#settings-button { border:0; background:transparent; font-size:19px; padding:7px }
+#settings-button { margin-left:auto }
+#messages { width:min(820px,100%); margin:auto; padding:36px 24px 180px; overflow-y:auto; flex:1 }
+#welcome { max-width:720px; text-align:center; margin:8vh auto 0 }
+.hero-logo { width:48px; height:48px; margin:auto; font-size:23px; border-radius:14px }
+h1 { font-size:30px; letter-spacing:-.7px; margin:18px 0 6px }
+#welcome p { color:var(--muted); margin:0 auto 28px }
+.suggestions { display:grid; grid-template-columns:1fr 1fr; gap:10px }
+.suggestions button { min-height:72px; padding:14px; text-align:left; background:var(--panel); border:1px solid var(--line); border-radius:12px }
+.suggestions button:hover { border-color:#55574d; background:var(--soft) }
+.message { display:grid; grid-template-columns:32px 1fr; gap:13px; margin:0 0 28px }
+.avatar { width:30px; height:30px; border-radius:8px; display:grid; place-items:center; background:var(--soft); font-size:12px; font-weight:800 }
+.assistant .avatar { background:var(--accent); color:#172006 }
+.content { min-width:0; padding-top:3px }
+.content p:first-child { margin-top:0 }.content p:last-child { margin-bottom:0 }
+.content pre { overflow:auto; background:#090a09; border:1px solid var(--line); padding:14px; border-radius:10px }
+.content code { font-family:"Cascadia Code",Consolas,monospace; font-size:13px }
+.cursor::after { content:'▋'; color:var(--accent); animation:blink .8s infinite }
+@keyframes blink { 50% { opacity:0 } }
+.error { color:#ff8e84 }
+.composer-wrap { position:absolute; bottom:0; left:0; right:0; padding:20px max(20px,calc((100% - 820px)/2 + 24px)) 12px; background:linear-gradient(transparent,var(--bg) 24%) }
+#composer { display:flex; align-items:flex-end; background:var(--panel); border:1px solid #3b3d35; border-radius:15px; padding:9px 9px 9px 15px; box-shadow:0 14px 40px #0005 }
+#prompt { resize:none; flex:1; max-height:180px; border:0; outline:0; background:transparent; color:var(--text); padding:5px 5px 4px 0 }
+#send { width:35px; height:35px; border:0; border-radius:9px; background:var(--accent); color:#172006; font-size:21px; font-weight:700 }
+#send:disabled { opacity:.4 }
+.composer-wrap small { display:block; text-align:center; color:#777970; margin-top:7px; font-size:11px }
+dialog { color:var(--text); background:var(--panel); border:1px solid var(--line); border-radius:14px; width:min(460px,calc(100% - 30px)); padding:0 }
+dialog::backdrop { background:#0009 }
+dialog form { padding:22px; display:grid; gap:18px }
+.dialog-title { display:flex; align-items:center; justify-content:space-between }.dialog-title h2 { margin:0;font-size:19px }.dialog-title button { border:0;background:transparent;font-size:25px }
+dialog label { display:grid; gap:7px; color:#c9cac4 } dialog textarea { background:#10110f;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px }
+@media(max-width:700px) { #sidebar { position:absolute; z-index:4; height:100%; transform:translateX(-100%); transition:.2s } #sidebar.open { transform:none } .suggestions { grid-template-columns:1fr } #messages { padding-inline:16px } }
+
